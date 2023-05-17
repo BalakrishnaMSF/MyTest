@@ -1,6 +1,8 @@
 package com.example.mytest2;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,47 +12,35 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // creating variables for our edittext, button and dbhandler
-    private EditText courseNameEdt, courseTracksEdt, courseDurationEdt, courseDescriptionEdt;
-    private Button addCourseBtn;
-    private DBHandler dbHandler;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // initializing all our variables.
-        courseNameEdt = findViewById(R.id.idEdtCourseName);
-        courseTracksEdt = findViewById(R.id.idEdtCourseTracks);
-        courseDurationEdt = findViewById(R.id.idEdtCourseDuration);
-        courseDescriptionEdt = findViewById(R.id.idEdtCourseDescription);
-        addCourseBtn = findViewById(R.id.idBtnAddCourse);
+        // Create an instance of the DatabaseHelper class
+        databaseHelper = new DatabaseHelper(this);
 
-        dbHandler = new DBHandler(MainActivity.this);
+        // Add a new row to the table
+        databaseHelper.addData("John", 25);
 
-        addCourseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        // Get all the rows from the table
+        Cursor cursor = databaseHelper.getAllData();
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                int age = cursor.getInt(cursor.getColumnIndex("age"));
+                Log.d("MainActivity", "Name: " + name + ", Age: " + age);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
 
-                String courseName = courseNameEdt.getText().toString();
-                String courseTracks = courseTracksEdt.getText().toString();
-                String courseDuration = courseDurationEdt.getText().toString();
-                String courseDescription = courseDescriptionEdt.getText().toString();
+        // Update a row in the table
+        databaseHelper.updateData(1, "Jane", 30);
 
-                if (courseName.isEmpty() && courseTracks.isEmpty() && courseDuration.isEmpty() && courseDescription.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please enter all the data..", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                dbHandler.addNewCourse(courseName, courseDuration, courseDescription, courseTracks);
-
-                Toast.makeText(MainActivity.this, "Course has been added.", Toast.LENGTH_SHORT).show();
-                courseNameEdt.setText("");
-                courseDurationEdt.setText("");
-                courseTracksEdt.setText("");
-                courseDescriptionEdt.setText("");
-            }
-        });
+        // Delete a row from the table
+        databaseHelper.deleteData(1);
     }
+
 }

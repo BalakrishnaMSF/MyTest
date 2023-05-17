@@ -6,4 +6,8 @@
     <string name="enter_course_tracks">Enter Course Tracks</string>
     <string name="enter_course_description">Enter Course Description</string>
     <string name="add_course">Add Course</string>
+    <string name="update_data">Update_data</string>
+    <string name="delete_data">Delete_data</string>
+    <string name="fetch_data">Fetch_data</string>
+    <string name="add_data">Add_data</string>
 </resources>

@@ -6,50 +6,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <EditText
-        android:id="@+id/idEdtCourseName"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnFetch"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textSize="18sp"
-        android:hint="@string/enter_course_name" />
-
-
-    <EditText
-        android:id="@+id/idEdtCourseDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textSize="18sp"
-        android:hint="@string/enter_course_duration" />
-
-
-    <EditText
-        android:id="@+id/idEdtCourseTracks"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textSize="18sp"
-        android:hint="@string/enter_course_tracks" />
-
-
-    <EditText
-        android:id="@+id/idEdtCourseDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_margin="10dp"
-        android:hint="@string/enter_course_description" />
-
+        android:text="Fetch Data"
+        android:onClick="fetchDataClick" />
 
     <Button
-        android:id="@+id/idBtnAddCourse"
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Data"
+        android:onClick="updateDataClick" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Data"
+        android:onClick="deleteDataClick" />
+
+    <TextView
+        android:id="@+id/tvData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/add_course"
-        android:textAllCaps="false" />
+        android:layout_marginTop="16dp"
+        android:textSize="16sp" />
+
+
 
 
 
