@@ -12,35 +12,62 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseHelper databaseHelper;
+    EditText editUserId;
+    EditText editUserName;
+    EditText editUserPassword;
+    DatabaseManager dbManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editUserId = (EditText) findViewById(R.id.editTextID);
+        editUserName = (EditText) findViewById(R.id.editTextUserName);
+        editUserPassword = (EditText) findViewById(R.id.editTextPassword);
 
-        // Create an instance of the DatabaseHelper class
-        databaseHelper = new DatabaseHelper(this);
-
-        // Add a new row to the table
-        databaseHelper.addData("John", 25);
-
-        // Get all the rows from the table
-        Cursor cursor = databaseHelper.getAllData();
-        if (cursor.moveToFirst()) {
-            do {
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                int age = cursor.getInt(cursor.getColumnIndex("age"));
-                Log.d("MainActivity", "Name: " + name + ", Age: " + age);
-            } while (cursor.moveToNext());
+        dbManager =  new DatabaseManager(this);
+        try {
+            dbManager.open();
         }
-        cursor.close();
+        catch (Exception e){
+            e.printStackTrace();
+        }
+//        DatabaseHelper dbHelper = new DatabaseHelper(this);
+//
+//        dbHelper.insertData(10,"test","pass");
 
-        // Update a row in the table
-        databaseHelper.updateData(1, "Jane", 30);
-
-        // Delete a row from the table
-        databaseHelper.deleteData(1);
     }
 
+    public void btnInsertPressed(View v){
+        dbManager.insert(Integer.parseInt(editUserId.getText().toString()),editUserName.getText().toString(), editUserPassword.getText().toString());
+
+
+    }
+
+    public void btnFetchPressed(View v){
+
+        Cursor cursor = dbManager.fetch();
+
+        if(cursor.moveToFirst()){
+            do{
+                String ID = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID));
+                String username = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_NAME));
+                String password = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_PASSWORD));
+                Log.i("DATABASE_TAG","I have read ID : " + ID + " Username "+ username+ "password :" + password);
+
+            }while (cursor.moveToNext());
+        }
+
+    }
+
+    public void btnUpdatePressed(View v){
+
+        dbManager.update(Long.parseLong(editUserId.getText().toString()), editUserName.getText().toString(), editUserPassword.getText().toString());
+    }
+
+    public void btnDeletePressed(View v){
+
+        dbManager.delete(Long.parseLong(editUserId.getText().toString()));
+    }
 }
