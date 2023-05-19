@@ -1,66 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/teal_200">
 
     <EditText
-        android:id="@+id/editTextID"
+        android:id="@+id/number1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:inputType="number"
-        android:hint="@string/id" />
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:hint="@string/enter_number1"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
 
     <EditText
-        android:id="@+id/editTextUserName"
+        android:id="@+id/number2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:inputType="text"
-        android:hint="@string/name" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/password" />
-
+        android:inputType="number"
+        android:gravity="center"
+        android:hint="@string/enter_number2"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/insert"
+        android:text="@string/addition"
         android:layout_gravity="center"
-        android:onClick="btnInsertPressed" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
+
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/subtraction"
         android:layout_gravity="center"
-        android:text="@string/fetch"
-        android:onClick="btnFetchPressed" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/update"
+        android:text="@string/multiplication"
         android:layout_gravity="center"
-        android:onClick="btnUpdatePressed" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/delete"
+        android:text="@string/division"
         android:layout_gravity="center"
-        android:onClick="btnDeletePressed" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
+
+    <EditText
+        android:id="@+id/number3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/results"
+        android:gravity="center"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp" />
 
 
 </LinearLayout>
