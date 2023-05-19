@@ -1,11 +1,9 @@
 package com.example.mytest2;
 
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -24,23 +22,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public void insertData( int _id,String username, String password){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(DatabaseHelper.USER_ID,_id);
-        contentValues.put(DatabaseHelper.USER_NAME, username);
-        contentValues.put(DatabaseHelper.USER_PASSWORD, password);
-        db.insert(DatabaseHelper.DATABASE_TABLE,null,contentValues);
-
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        Log.d("MYLOG", "CREATE_DB_QUERY called");
-//        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + DATABASE_TABLE + "("
-//                + USER_ID + " INTEGER PRIMARY KEY," + USER_NAME + " TEXT,"
-//                + USER_PASSWORD + " TEXT" + ")";
-//        db.execSQL(CREATE_CONTACTS_TABLE);
         db.execSQL(CREATE_DB_QUERY);
 
     }

@@ -5,11 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.sql.SQLDataException;
 
 public class DatabaseManager {
 
-    private DatabaseHelper dbHelper;
     private final Context context;
     private SQLiteDatabase database;
 
@@ -17,10 +15,9 @@ public class DatabaseManager {
         context = ctx;
     }
 
-    public DatabaseManager open() throws SQLDataException {
-        dbHelper = new DatabaseHelper(context);
+    public void open() {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
         database = dbHelper.getWritableDatabase();
-        return this;
     }
 
     public void insert( int _id,String username, String password){

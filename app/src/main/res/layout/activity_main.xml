@@ -12,49 +12,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:inputType=""
-        android:hint="ID" />
+        android:inputType="number"
+        android:hint="@string/id" />
 
     <EditText
         android:id="@+id/editTextUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Name" />
+        android:inputType="text"
+        android:hint="@string/name" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Password" />
+        android:hint="@string/password" />
 
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="insert"
+        android:text="@string/insert"
+        android:layout_gravity="center"
         android:onClick="btnInsertPressed" />
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fetch"
+        android:layout_gravity="center"
+        android:text="@string/fetch"
         android:onClick="btnFetchPressed" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="update"
+        android:text="@string/update"
+        android:layout_gravity="center"
         android:onClick="btnUpdatePressed" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="delete"
+        android:text="@string/delete"
+        android:layout_gravity="center"
         android:onClick="btnDeletePressed" />
 
 
